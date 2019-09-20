@@ -1,0 +1,76 @@
+<mat-card-header>
+    <mat-toolbar class="toolbar">
+        <mat-card-title class="title">Add New Information</mat-card-title>
+        <span class="toolbar-spacer"></span>
+        <mat-icon (click)="onNoClick()" class="cancel">cancel</mat-icon>
+    </mat-toolbar>
+</mat-card-header>
+<mat-card-content>
+    <div class="container">
+        <form #taskForm="ngForm" [formGroup]="_taskForm" (ngSubmit)="onSubmit(taskForm)">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="label">Task ID:</label>
+                        <div class="radio-button">
+                            <input type="text" formControlName="taskID" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="label">Task List:</label>
+                        <input type="text" formControlName="taskList" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="label">Department Name:</label>
+                        <input type="text" formControlName="departmentName" class="form-control"
+                            [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let departmentName of filteredOptions | async" [value]="departmentName">
+                                {{ departmentName }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="label">Service Type:</label>
+                        <input type="text" formControlName="serviceType" class="form-control" [matAutocomplete]="auto2">
+                        <mat-autocomplete #auto2="matAutocomplete">
+                            <mat-option *ngFor="let serviceType of filteredOptions2 | async" [value]="serviceType">
+                                {{ serviceType }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="label">Skill:</label>
+                        <input type="text" formControlName="skill" class="form-control" [matAutocomplete]="auto3">
+                        <mat-autocomplete #auto3="matAutocomplete">
+                            <mat-option *ngFor="let skill of filteredOptions3 | async" [value]="skill">
+                                {{ skill }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="label">Role:</label>
+                        <input type="text" formControlName="role" class="form-control" [matAutocomplete]="auto4">
+                        <mat-autocomplete #auto4="matAutocomplete">
+                            <mat-option *ngFor="let role of filteredOptions4 | async" [value]="role">
+                                {{ role }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- <button type="submit" class="btn btn-success">
+              <mat-icon>save</mat-icon>
+            </button> -->
+                        <button type="submit" mat-stroked-button color="primary" class="save-button">Save</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</mat-card-content>

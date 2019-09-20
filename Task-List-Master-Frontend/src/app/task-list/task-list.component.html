@@ -1,0 +1,45 @@
+<mat-card>
+    <mat-card-header>
+      <mat-toolbar class="toolbar full-width">
+        <mat-card-title class="title">Task List Master</mat-card-title>
+        <span class="toolbar-spacer"></span>
+        <!-- <mat-icon (click)="addDepartment()">add</mat-icon> -->
+        <button mat-button (click)="addTask()" class="add-button">Add</button>
+      </mat-toolbar>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <div class="container">
+        <table class="table">
+          <thead>
+            <th>Task ID</th>
+            <th>Task List</th>
+            <th>Department Name</th>
+            <th>Service Type</th>
+            <th>Skill</th>
+            <th>Role</th>
+          </thead>
+          <tr *ngFor="let Task of _taskService._taskList">
+            <td>{{Task.taskID}}</td>
+            <td>{{Task.taskList}}</td>
+            <td>{{Task.departmentName}}</td>
+            <td>{{Task.serviceType}}</td>
+            <td>{{Task.skill}}</td>
+            <td>{{Task.role}}</td>
+  
+            <!-- <td><mat-icon (click)="deleteDepartment(Department._id)">delete</mat-icon></td>
+            <td><mat-icon (click)="editDepartment(Department._id)">edit</mat-icon></td> -->
+  
+            <td><a class ="action-btn" (click)="editTask(Task)" class="action">
+              <i class ="material-icons">edit</i></a></td>
+            <td><a class ="action-btn"  (click)="deleteTask(Task._id)" class="action">
+              <i class ="material-icons">delete</i></a></td>
+          </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5,10,15]"  showFirstLastButtons></mat-paginator>
+        <!-- <mat-paginator></mat-paginator> -->
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+
